@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/08 16:18:32 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/08 16:53:06 by apoque           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	ft_iterative_factorial(int nb)
 {
 	int	res;
@@ -8,12 +20,12 @@ int	ft_iterative_factorial(int nb)
 	else if (nb == 0 || nb == 1)
 		return (res);
 	else
+	{
+		while (nb > 0)
 		{
-			while (nb > 0)
-			{
-				res = res * nb;
-				nb--;
-			}
-			return (res);
+			res = res * nb;
+			nb--;
 		}
+		return (res);
+	}
 }

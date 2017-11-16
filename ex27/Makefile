@@ -1,17 +1,32 @@
-NAME = display_file
-FLAGS = -Wall -Wextra -Werror
-FILES = main.c
-OPTION = -o
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: apoque <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/11/08 16:35:26 by apoque            #+#    #+#              #
+#    Updated: 2017/11/08 18:29:38 by apoque           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-all : $(NAME)
+NAME = ft_display_file
 
-$(NAME) :
-	@gcc $(FLAGS) $(FILES) $(OPTION) $(NAME)
+FLAG = -Wall -Wextra -Werror
 
-clean :
-	@export a
+SRC = main.c
 
-fclean : clean
-	@rm -rf $(NAME)
+OBJ = main.o
 
-re : fclean $(NAME)
+all: $(NAME)
+
+$(NAME):
+	        gcc $(FLAG) $(SRC) -o $(NAME)
+
+clean:
+	        rm -f $(OBJ)
+
+fclean: clean
+	        rm -f $(NAME)
+
+re: fclean all

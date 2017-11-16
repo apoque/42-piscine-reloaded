@@ -1,28 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apoque <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/08 16:35:17 by apoque            #+#    #+#             */
+/*   Updated: 2017/11/08 18:33:24 by apoque           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 
-void	ft_affichage(char **av)
+void	ft_putchar(char c)
 {
-	int	fd;
-	int	ret;
-	char	buf[1];
-
-	ret = 0;
-	fd = open(av[1], O_RDONLY);
-	while ((ret = read(fd, buf, 1)))
-		write(1, buf, 1);
-	close(fd);
+	write(1, &c, 1);
 }
 
-int	main(int ac, char **av)
+void	ft_putstr(char *s1)
 {
-	if (ac == 1)
-		write(1, "File name missing.\n", 19);
-	else if (ac > 2)
-		write(1, "Too many arguments.\n", 20);
-	else
-		ft_affichage(av);
-	return(0);
+	int i;
+
+	i = 0;
+	while (s1[i] != 0)
+	{
+		ft_putchar(s1[i]);
+		i++;
+	}
+}
+
+int		main(int argc, char **argv)
+{
+	int		fd;
+	char	buf[1];
+
+	if (argc == 1)
+	{
+		write(2, "File name missing.\n", 19);
+		return (0);
+	}
+	if (argc > 2)
+	{
+		write(2, "Too many arguments.\n", 20);
+		return (0);
+	}
+	fd = open(argv[1], O_RDONLY);
+	while (read(fd, buf, 1))
+		write(1, buf, 1);
+	close(fd);
+	return (0);
 }
